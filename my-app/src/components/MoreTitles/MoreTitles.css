@@ -1,0 +1,26 @@
+@media only screen and (max-width:1045px){
+    .titles-grid-container{
+        grid-template-columns:auto auto!important;    
+    }
+}
+
+.titles-grid-container{
+    display: grid;
+    height:90%;
+    align-content:center;
+    grid-template-columns:auto auto auto;
+    gap:15px;
+    z-index: 2;
+}
+.titles-heading h3{
+    color: aliceblue;
+    font-size: 35px;
+    font-weight: 370;
+}
+.grid-components img{
+    height:100%;
+    cursor:pointer;   
+}
+.grid-components img:hover{
+    transform: perspective(120px) translateZ(5px);
+}
