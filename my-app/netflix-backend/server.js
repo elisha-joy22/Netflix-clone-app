@@ -5,10 +5,11 @@ const {MongoClient}=require("mongodb");
 const app=express();
 const {dbConnection}=require("./Database/db.js");
 
-const genreRouter=require("./Routes/genres")
+const genresRouter=require("./Routes/genres");
+const movieRouter=require("./Routes/movie");
 
-app.use("/genres",genreRouter);
-
+app.use("/genres",genresRouter);
+app.use("/movie",movieRouter);
 
 
 app.listen(4000,async()=>{

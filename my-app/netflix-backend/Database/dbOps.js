@@ -1,23 +1,21 @@
 require("dotenv").config();
-const db=require("./db");
+const {getdb}=require("./db");
 
-function pipelineHome(match,sort){
+
+// i/p - 4 objects   o/p - pipeline array
+function pipelineHome(match,sort,project,limit){
     const pipeline=[
-       {$match:match},
-       {$sort:
-           {"metaData.year":sort}
-       },
-       {$project:
-           {_id:1,
-           title_image:1}
-       },
-       {$limit:8}
+       {$match : match},
+       {$sort : sort},
+       {$project : project},
+       {$limit : limit}
    ];
    return pipeline;
 
 }
 
 
+// i/p - pipeline array  o/p - Desired data in an array
 async function fetchMovies(pipeline){
     try{
         const cursor=await getdb().collection(process.env.MONGODB_COLLECTION_NAME).aggregate(pipeline).toArray();
@@ -26,6 +24,19 @@ async function fetchMovies(pipeline){
      catch(err){
          console.log("Fetching failed!!",err);
      }  
- }
+}
 
-module.exports = {fetchMovies};
+
+
+// i/p-genreArray   o/p- Array containing similar movies
+async function similarMovies(genreArray){
+    const match = {$or:genreArray}
+    const sort = {"metaData.year":1}
+    const project = {_id:1,title_image:1}
+    const limit = 12
+    const result = await fetchMovies(pipelineHome(match,sort,project,limit));
+    return result;
+}
+
+
+module.exports = {fetchMovies,pipelineHome,similarMovies};

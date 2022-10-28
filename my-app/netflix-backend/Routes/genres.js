@@ -1,51 +1,51 @@
 const express=require("express");
-const app=express();
 const router=express.Router();
-const db=require("../Database/dbOps");
+const {fetchMovies,pipelineHome}=require("../Database/dbOps");
 
 
-
-
+const sort={"metaData.year":-1};
+const project={_id:1,title_image:1};
+const limit=8;    
 
 router.get("/Recently_Added",async (req,res)=>{
-    const result=await db.fetchMovies(pipelineHome({},-1));
+    const result=await fetchMovies(pipelineHome({},sort,project,limit));
     console.log(result);
     res.json(result);
 })
 
 
 router.get("/Dramas",async (req,res)=>{
-    const result=await db.fetchMovies(pipelineHome({genre:"Dramas"},1));
+    const result=await fetchMovies(pipelineHome({genre:"Dramas"},sort,project,limit));
     console.log(result);
     res.json(result);
 })
 
 router.get("/Action_&_Adventure",async(req,res)=>{
-    const result=await db.fetchMovies(pipelineHome({genre:"Action & Adventure"},1));
+    const result=await fetchMovies(pipelineHome({genre:"Action & Adventure"},sort,project,limit));
     console.log(result);
     res.json(result);
 })
 
 router.get("/Crime_Movies",async(req,res)=>{
-    const result=await db.fetchMovies(pipelineHome({genre:"Crime Movies"},1));
+    const result=await fetchMovies(pipelineHome({genre:"Crime Movies"},sort,project,limit));
     console.log(result);
     res.json(result);
 })
 
 router.get("/Thriller_Movies",async(req,res)=>{
-    const result=await db.fetchMovies(pipelineHome({genre:"Thriller Movies"},1));
+    const result=await fetchMovies(pipelineHome({genre:"Thriller Movies"},sort,project,limit));
     console.log(result);
     res.json(result);
 })
 
 router.get("/Malayalam_Language_Movies",async(req,res)=>{
-    const result=await db.fetchMovies(pipelineHome({genre:"Malayalam-Language Movies"},1));
+    const result=await fetchMovies(pipelineHome({genre:"Malayalam-Language Movies"},sort,project,limit));
     console.log(result);
     res.json(result);
 })
 
 router.get("/Sci-Fi_Movies",async(req,res)=>{
-    const result=await db.fetchMovies(pipelineHome({genre:"Sci-Fi Movies"},1));
+    const result=await fetchMovies(pipelineHome({genre:"Sci-Fi Movies"},sort,project,limit));
     console.log(result);
     res.json(result);
 })
