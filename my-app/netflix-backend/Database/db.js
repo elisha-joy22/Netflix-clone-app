@@ -11,7 +11,6 @@ async function dbConnection(callback){
        await client.connect();
        state.db=db;
        callback("Database connected successfully");
-       console.log(state);
     }
     catch(e){
         callback("Error connecting db:"+e);
@@ -31,5 +30,10 @@ function getdb(){
     return state.db;
 }
 
+
+
+
 module.exports= {dbConnection,getdb};
+
+
 
