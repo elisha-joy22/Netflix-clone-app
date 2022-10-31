@@ -17,8 +17,8 @@ app.use("/genres",genresRouter);
 app.use("/movie",movieRouter);
 
 
-app.listen(4000,async()=>{
-    console.log("Server connected on port 4000 successsfully");
+app.listen(process.env.SERVER_PORT,async()=>{
+    console.log(`Server connected on ${process.env.SERVER_PORT} successsfully`);
     await dbConnection((result)=>{
         console.log(result);
     });
