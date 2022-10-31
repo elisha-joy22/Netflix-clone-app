@@ -32,7 +32,7 @@ async function fetchMovies(pipeline){
 async function similarMovies(genreArray){
     const match = {$or:genreArray}
     const sort = {"metaData.year":1}
-    const project = {_id:1,title_image:1}
+    const project = {_id:1,template_image:1}
     const limit = 12
     const result = await fetchMovies(pipelineHome(match,sort,project,limit));
     return result;
