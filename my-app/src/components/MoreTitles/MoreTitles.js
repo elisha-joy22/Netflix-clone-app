@@ -1,7 +1,7 @@
-import React from "react";
-import '../../App.css'
+import React , {useEffect,useState} from "react";
+import '../../App.css';
 import './MoreTitles.css';
-
+import axios from '../../axios';
 
 let arr=[
     "https://occ-0-3973-3663.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABVzN0S-KRp5ZsZZImUrFudjcjRzsg56WWOHKnu8y0TUbmlXrOj2ekX6ytGo-OhXyvjhOBcjF37wwaRTHl-zjGHvsQZgcddmnVDS6.jpg?r=7b1",
@@ -18,18 +18,28 @@ let arr=[
     "https://occ-0-3973-3663.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABXNwJ-vB1mflJuHFw_6OYFqWUfvKOgveaXdVnBDQH9r2-rbDsMEuj3WDg4rzU4GaSuqwuMP6bMelTzZdVd-95tuIqJVNLgA5dsQv.jpg?r=e5b"
 ];
 
-function MoreTitles(){
+function MoreTitles(props){
+    const [moreTitles,setMoreTitles] = useState();
+    useEffect(()=>{
+        axios.get(props.url)
+        .then((response)=>{
+            console.log(response.data.similarMovies);
+            setMoreTitles(response.data.similarMovies);
+        })
+    },[])
     return(
         <section className="section-common">
             <div className="titles-heading">
                 <h3>More Like This</h3>
             </div>
             <div className="titles-grid-container">
-                {arr.map((template)=>{
+                {
+                moreTitles.map((obj)=>{
                     return (
-                    <div className="grid-components"><img src={template} alt=""/></div>
+                    <div className="grid-components"><img src={obj.template_image} alt=""/></div>
                     )
-                })}
+                })
+                }
             </div>
         </section>
     )

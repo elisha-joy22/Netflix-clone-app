@@ -12,9 +12,8 @@ function App() {
   return (
     <div className="App">
         <Navbar/>
-        <Banner url={link}/>
-        <Details url={link}/>
-        <MoreTitles/>
+
+        <MoreTitles url={link}/>
         <Footer/>
     </div>
   );
