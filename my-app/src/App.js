@@ -6,14 +6,14 @@ import Footer from './components/Footer/Footer';
 import MoreTitles from './components/MoreTitles/MoreTitles';
 import Navbar from './components/Navbar/Navbar';
 
-
+let link="movie/6346fd19fe46018b5f66d26f"
 
 function App() {
   return (
     <div className="App">
         <Navbar/>
-        <Banner/>
-        <Details/>
+        <Banner url={link}/>
+        <Details url={link}/>
         <MoreTitles/>
         <Footer/>
     </div>

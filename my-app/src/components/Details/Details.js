@@ -1,23 +1,19 @@
-import React from "react";
+import React,{useEffect,useState} from "react";
 import '../../App.css'
 import './Details.css';
+import axios from '../../axios';
 
-let genres=[
-    "Sci-Fi Movies","US Movies","Movies Based on Books","Action & Adventure"
-];
-let audio="Hindi,Malayalam,Tamil,Telugu";
-let subtitles="English,Hindi";
-let cast=[
-"Chloë Grace Moretz",
-"Nick Robinson",
-"Ron Livingston",
-"Maggie Siff",
-"Alex Roe",
-"Maria Bello",
-"Maika Monroe",
-"Zackary Arthur",
-"Liev Schreiber"]
-function Details(){
+
+function Details(props){
+    const [details,setDetails] = useState();
+    
+    useEffect(()=>{
+        axios.get(props.url)
+        .then((response)=>{
+            setDetails(response.data.movie);
+        })
+    },[]);
+
     return(
         <section className="section-common " id="details-section">
             <div className="details-heading">
@@ -33,31 +29,35 @@ function Details(){
                     <div className="text-grey details-head">Genres</div>
                     <div>
                     {
-                        genres.map((genre)=>{
+                        details?
+                        details.genre.map((item)=>{
                             return(
-                            <span>{genre}</span>
+                            <span>{item}</span>
                             )
                         })
+                        :''
                     }
                     </div>
                 </div>
                 <div className="details-audio">
                     <div className="text-grey details-head">Audio</div>
-                    <div>{audio}</div>
+                    <div>{details?details.audio:''}</div>
                 </div>
                 <div className="details-subtitles">
                     <div className="text-grey details-head">Subtitles</div>
-                    <div>{subtitles}</div>
+                    <div>{details?details.subtitles:''}</div>
                 </div>
             </div>
             <div className="details-cast">
                 <h3 className="text-grey details-head">Cast</h3>
                 <div className="details-cast-grid">
                     {
-                        cast.map((person)=>{
+                        details?
+                        details.cast.map((person)=>{
                             return(
                             <div><a>{person}</a></div>
                             )})
+                        :''    
                     }
                 </div>
             </div>
