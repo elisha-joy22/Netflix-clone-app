@@ -11,7 +11,7 @@ function Details(props){
         axios.get(props.url)
         .then((response)=>{
             setDetails(response.data.movie);
-        })
+        });
     },[]);
 
     return(
