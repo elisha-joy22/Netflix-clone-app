@@ -15,7 +15,7 @@ router.get("/:id",async (req,res)=>{
         genreArray.push({genre:item});
     });
     
-    const resultSimilarMovies=await similarMovies(genreArray);
+    const resultSimilarMovies=await similarMovies(genreArray,req.params.id);
     
     //Paste both movie details and similar movies array to an object
     const data={movie:resultMovie[0],similarMovies:resultSimilarMovies}

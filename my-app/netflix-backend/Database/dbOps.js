@@ -1,5 +1,6 @@
 require("dotenv").config();
 const {getdb}=require("./db");
+const objectId=require("mongodb").ObjectId;
 
 
 // i/p - 4 objects   o/p - pipeline array
@@ -29,8 +30,8 @@ async function fetchMovies(pipeline){
 
 
 // i/p-genreArray   o/p- Array containing similar movies
-async function similarMovies(genreArray){
-    const match = {$or:genreArray}
+async function similarMovies(genreArray,id){
+    const match = {$and:[{_id:{$ne:objectId(id)}},{$or:genreArray}]}
     const sort = {"metaData.year":1}
     const project = {_id:1,template_image:1}
     const limit = 12

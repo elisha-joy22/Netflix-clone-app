@@ -2,6 +2,7 @@ import React,{useEffect,useState} from 'react';
 import '../../App.css';
 import './Banner.css';
 import axios from '../../axios';
+import { baseUrl } from "../../constants/constants";
 
 function Banner(props){        
     const [movie,setMovie] = useState();
@@ -29,7 +30,7 @@ function Banner(props){
                         <span className='pipe'>|</span>
                         <span>{movie?movie.metaData.duration:''}</span>
                         <span className='pipe'>|</span>
-                        <span><a>{movie?movie.genre[0]:''}</a></span>
+                        <span><a href={baseUrl+"genres/"+(movie?movie.genre[0]:'')}>{movie?movie.genre[0]:''}</a></span>
                     </div>
                     <div className='m-description'>{movie?movie.description:''}</div>
                     <div className='m-cast'><span className='cast'>Starring : </span><span>{movie?movie.cast[0]:''},{movie?movie.cast[1]:''},{movie?movie.cast[2]:''}</span></div>

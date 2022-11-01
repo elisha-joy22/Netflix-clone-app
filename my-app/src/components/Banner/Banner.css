@@ -80,6 +80,10 @@
 .m-metadata span{
     display: inline-block;
 }
+.m-metadata span a{
+    color:  #a3a1a1;
+    text-decoration: none;
+}
 .m-metadata span a:hover{
     cursor: pointer;
     text-decoration: underline;
