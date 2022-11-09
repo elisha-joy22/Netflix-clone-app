@@ -3,6 +3,7 @@ import '../../App.css';
 import './MoreTitles.css';
 import axios from '../../axios';
 import { baseUrl } from "../../constants/constants";
+import { Link } from "react-router-dom";
 
 function MoreTitles(props){
     const [moreTitles,setMoreTitles] = useState();
@@ -23,7 +24,7 @@ function MoreTitles(props){
                 moreTitles?
                 moreTitles.map((obj)=>{
                     return (
-                    <div className="grid-components"><a href={baseUrl+"movie/"+obj._id}><img src={obj.template_image} alt=""/></a></div>
+                    <div className="grid-components"><Link to={'movie/'+obj._id}><img src={obj.template_image} alt=""/></Link></div>
                     )                    
                 })
                 :''
