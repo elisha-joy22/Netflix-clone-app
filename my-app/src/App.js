@@ -7,16 +7,18 @@ import Footer from './components/Footer/Footer';
 import MoreTitles from './components/MoreTitles/MoreTitles';
 import Navbar from './components/Navbar/Navbar';
 import axios from './axios';
+import One from './components/Movie/One';
+import Movies from './components/Movie/Movie';
 
-var link="movie/6346fd19fe46018b5f66d26f";
 
 function App() {
+
   return (
     <div className="App">
       <Router>
         <Navbar/>
         <Routes>
-            <Route path={"/"} element={<><Banner url={link}/><Details url={link}/><MoreTitles url={link}/></>}/>
+            <Route path={"/"} element={<><Movies/></>}/>
             <Route path={"*"} element={<h3>Page not found</h3>}/>
         </Routes>
         <Footer/>

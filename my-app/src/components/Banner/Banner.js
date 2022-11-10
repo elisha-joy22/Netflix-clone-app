@@ -1,17 +1,14 @@
 import React,{useEffect,useState} from 'react';
 import '../../App.css';
 import './Banner.css';
-import axios from '../../axios';
 import { baseUrl } from "../../constants/constants";
 
-function Banner(props){        
-    const [movie,setMovie] = useState();
+function Banner({data}){        
+    let [movie,setMovie] = useState();
+
     useEffect(()=>{
-        axios.get(props.url)
-        .then((response)=>{
-            setMovie(response.data.movie);
-        });
-    },[]);
+        setMovie(data);
+    });
     
     return(
         <section className='section-common banner-section'>

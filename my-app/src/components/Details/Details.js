@@ -1,18 +1,15 @@
 import React,{useEffect,useState} from "react";
 import '../../App.css'
 import './Details.css';
-import axios from '../../axios';
 
 
-function Details(props){
-    const [details,setDetails] = useState();
+
+function Details({data}){
+    let [details,setDetails] = useState();
     
     useEffect(()=>{
-        axios.get(props.url)
-        .then((response)=>{
-            setDetails(response.data.movie);
-        });
-    },[]);
+        setDetails(data);
+    });
 
     return(
         <section className="section-common " id="details-section">
