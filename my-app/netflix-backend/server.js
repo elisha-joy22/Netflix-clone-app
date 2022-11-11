@@ -4,7 +4,7 @@ const cors = require("cors");
 const {MongoClient} = require("mongodb");
 const {dbConnection} = require("./Database/db.js");
 
-const genresRouter = require("./Routes/genres");
+const genresRouter = require("./Routes/genre");
 const movieRouter = require("./Routes/movie");
 
 
@@ -13,7 +13,7 @@ const app = express();
 app.use(cors());
 
 //Routes
-app.use("/genres",genresRouter);
+app.use("/genre",genresRouter);
 app.use("/movie",movieRouter);
 
 

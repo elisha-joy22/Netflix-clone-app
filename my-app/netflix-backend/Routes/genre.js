@@ -4,7 +4,7 @@ const {fetchMovies,pipelineHome}=require("../Database/dbOps");
 
 
 const sort={"metaData.year":-1};
-const project={_id:1,title_image:1};
+const project={_id:1,title:1,template_image:1};
 const limit=8;    
 
 router.get("/Recently%20Added",async (req,res)=>{
