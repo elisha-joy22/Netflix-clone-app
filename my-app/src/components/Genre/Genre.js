@@ -1,7 +1,10 @@
-import React,{useState,useEffect} from "react";
+import React,{useState,useEffect,useContext} from "react";
+import { Link } from "react-router-dom";
 import axios from '../../axios';
 import '../../App.css';
 import './Genre.css' 
+
+
 
 
 /* Genre Component calls GenreInstance component where the logics are written and pass title as props */
@@ -9,6 +12,14 @@ function Genre(){
     let genreArr = ["Recently Added","Action & Adventure","Dramas","Crime Movies","Thriller Movies","Sci-Fi Movies","Malayalam-Language Movies"]
     return(
         <section className="genre-section">
+            <div className="genre-container genre-main-heading" >
+                <h1>Movies</h1>
+                <h3>Movies move us like nothing else can,
+                     whether they’re scary, funny, dramatic,
+                      romantic or anywhere in-between.
+                       So many titles, so much to experience.
+                </h3>
+            </div>
             {
                 genreArr.map((name)=>{      
                    return(
@@ -36,7 +47,6 @@ function GenreInstance({title}){
         })
     },[])
     return(
-        
             <div className="section-common genre-container">
                 <div className="genre-title"> 
                     <h3 className="">{title}</h3>
@@ -56,7 +66,5 @@ function GenreInstance({title}){
             </div>          
     )
 }
-
-
 
 export default Genre;

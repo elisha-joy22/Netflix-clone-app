@@ -7,6 +7,23 @@
 .genre-section{
     padding-top:2.5%;
     padding-bottom:0.5% ;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.genre-main-heading{
+    width:50%;
+    padding-bottom: 2%;
+}
+.genre-main-heading h1{
+    font-size: 300%;
+    font-weight: 800;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+.genre-main-heading h3{
+    font-size: 125%;
+    font-weight: 300;
+    margin-top: 1%;
 }
 
 .genre-container{
@@ -22,7 +39,7 @@
     padding: 0;
     margin-bottom: 1.5%;
     font-weight: 650;
-    font-size: 110%;
+    font-size: 130%;
 }
 
 .genre-templates-container{
@@ -41,13 +58,14 @@
     min-width:43%;
     margin-right: 15px;
     padding-bottom: 2%;
+    cursor:pointer;
 }
-.templates img{
+.template img{
     height: 100%;
 }
 .template h3{
     text-align: center;
-    font-weight: 500;
-    font-size: 95%;
+    font-weight: 400;
+    font-size: 105%;
     margin:0;
 }

@@ -1,6 +1,9 @@
 import React from "react";
 import '../../App.css'
 import './Navbar.css';
+import { Link } from "react-router-dom";
+import {localhost} from "../../constants/constants"
+import Genre from "../Genre/Genre";
 
 function Navbar(){
     return(
@@ -12,10 +15,10 @@ function Navbar(){
             </div>
             <div className="nav-items">
                 <div className="nav-item">
-                    <a>Home</a>
+                    <a><Link to='/'> Home</Link></a>
                 </div>
                 <div className="nav-item">
-                    <a>Movies</a>
+                    <a><Link to='/movie'> Movies</Link></a>
                 </div>
                 <div className="nav-item">
                     <a>New Popular</a>
