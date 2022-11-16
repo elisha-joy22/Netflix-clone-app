@@ -3,7 +3,7 @@ import axios from '../../axios';
 import Banner from '../Banner/Banner';
 import Details from '../Details/Details';
 import MoreTitles from '../MoreTitles/MoreTitles';
-
+import './Movie.css';
 export const MovieContext = createContext();
 
 
@@ -34,12 +34,10 @@ function Movies({link,setLink}){
     },[link])
 
     /* Event Listener*/
-    function eventListener(){
-    const video = document.getElementsByClassName('video');
-        video.onended = ()=>{
-            alert("video ended")
-        }
-    }
+
+
+
+
 
     /*changeLink function to simultaneously change the link from moreTitles child*/
     function changeLink(link){
@@ -51,9 +49,9 @@ function Movies({link,setLink}){
         <div>
             {
                 !play?<Banner data={movieData} play={play} setPlay={setPlay}/>
-                :<div>
-                    <iframe className='video' src={"https://www.youtube.com/embed/"+movieData.youtube_id+"?autoplay=1"} width='100%'
-                    height='500' frameborder='0' allowFullScreen='' webkitallowfullscreen="true" allow='autoplay'/>                                        
+                :<div className='screen'>
+                    <iframe className='video' src={"https://www.youtube.com/embed/"+movieData.youtube_id+"?autoplay=1&modestbranding=1&controls=1"} width='100%'
+                    height='560' frameborder='0'  allowFullScreen='true' webkitallowfullscreen="true" allow='autoplay'/>
                  </div>
                 
             }
