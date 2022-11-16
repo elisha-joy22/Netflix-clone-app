@@ -1,17 +1,17 @@
-import React,{useState ,useEffect} from 'react';
+import React,{useState ,useEffect,createContext} from 'react';
 import axios from '../../axios';
 import Banner from '../Banner/Banner';
 import Details from '../Details/Details';
 import MoreTitles from '../MoreTitles/MoreTitles';
 
+export const MovieContext = createContext();
 
 
-
-function Movies(){
+function Movies({link,setLink}){
 
     let [titlesData,setTitlesData] = useState();
     let [movieData,setMovieData] = useState();
-    let [link,setLink] = useState();
+    let [play,setPlay] = useState(false);
  
     /*UseEffect for Changing the link by changeLink function*/ 
     useEffect(()=>{
@@ -33,7 +33,14 @@ function Movies(){
         });
     },[link])
 
-    
+    /* Event Listener*/
+    function eventListener(){
+    const video = document.getElementsByClassName('video');
+        video.onended = ()=>{
+            alert("video ended")
+        }
+    }
+
     /*changeLink function to simultaneously change the link from moreTitles child*/
     function changeLink(link){
         setLink(link);
@@ -42,9 +49,17 @@ function Movies(){
     
     return(
         <div>
-            <Banner data={movieData}/>
+            {
+                !play?<Banner data={movieData} play={play} setPlay={setPlay}/>
+                :<div>
+                    <iframe className='video' src={"https://www.youtube.com/embed/"+movieData.youtube_id+"?autoplay=1"} width='100%'
+                    height='500' frameborder='0' allowFullScreen='' webkitallowfullscreen="true" allow='autoplay'/>                                        
+                 </div>
+                
+            }
+            
             <Details data={movieData}/>
-            <MoreTitles data={titlesData} changeLink={changeLink}/>
+            <MoreTitles data={titlesData} changeLink={changeLink} setPlay={setPlay}/>
         </div>
     )
 }

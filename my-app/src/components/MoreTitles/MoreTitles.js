@@ -4,7 +4,7 @@ import './MoreTitles.css';
 import { baseUrl } from "../../constants/constants";
 import { Link } from "react-router-dom";
 
-function MoreTitles({data,changeLink}){
+function MoreTitles({data,changeLink,setPlay}){
     let [moreTitles,setMoreTitles] = useState();
 
     useEffect(()=>{
@@ -21,7 +21,12 @@ function MoreTitles({data,changeLink}){
                 moreTitles?
                 moreTitles.map((obj)=>{
                     return (
-                    <div className="grid-components"><img src={obj.template_image} alt="" onClick={()=>{changeLink('movie/'+obj._id)}}/></div>
+                        <div className="grid-components">
+                            <img className={!data?'loading-light':''} src={obj.template_image} alt="" onClick={()=>{
+                                changeLink('movie/'+obj._id);
+                                setPlay(false);
+                                }}/>
+                        </div>
                     )                    
                 })
                 :''

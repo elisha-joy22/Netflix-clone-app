@@ -7,15 +7,14 @@ import {Movies} from './components/Movie/Movie';
 import Genre from './components/Genre/Genre';
 
 function App() {
-
+  let [link,setLink] = useState();
   return (
     <div className="App">
-      {console.log("App")}
       <Router>
         <Navbar/>
         <Routes>
-            <Route path={"/"} element={<><Movies/></>}/>
-            <Route path={"/movie"} element={<><Genre/></>}/>
+            <Route path={"/"} element={<><Movies link={link} setLink={setLink}/></>}/>
+            <Route path={"/movie"} element={<><Genre setLink={setLink}/></>}/>
             <Route path={"*"} element={<h3>Page not found</h3>}/>
         </Routes>
         <Footer/>

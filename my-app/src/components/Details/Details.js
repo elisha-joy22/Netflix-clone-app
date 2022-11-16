@@ -17,10 +17,10 @@ function Details({data}){
                 <h3>More Details</h3>
             </div>
                 
-            <div className="details-details-grid">
+            <div className={`details-details-grid ${!data?'loading-light':''}`}>
                 <div className="details-watch-offline">
                     <div className="text-grey details-head">Watch Offline</div>
-                    <div>Available to download</div>
+                    <div className={!data?'display-none':''}>Available to download</div>
                 </div>                
                 <div className="details-genres">
                     <div className="text-grey details-head">Genres</div>
@@ -45,7 +45,7 @@ function Details({data}){
                     <div>{details?details.subtitles:''}</div>
                 </div>
             </div>
-            <div className="details-cast">
+            <div className={`${!data?'loading-light display-none':'details-cast'}`}>
                 <h3 className="text-grey details-head">Cast</h3>
                 <div className="details-cast-grid">
                     {

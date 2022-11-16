@@ -2,13 +2,14 @@ import React,{useState,useEffect,useContext} from "react";
 import { Link } from "react-router-dom";
 import axios from '../../axios';
 import '../../App.css';
-import './Genre.css' 
+import './Genre.css';
+import { MovieContext, Movies } from "../Movie/Movie";
 
 
 
 
 /* Genre Component calls GenreInstance component where the logics are written and pass title as props */
-function Genre(){
+function Genre({setLink}){
     let genreArr = ["Recently Added","Action & Adventure","Dramas","Crime Movies","Thriller Movies","Sci-Fi Movies","Malayalam-Language Movies"]
     return(
         <section className="genre-section">
@@ -24,7 +25,7 @@ function Genre(){
                 genreArr.map((name)=>{      
                    return(
                     <>
-                    <GenreInstance title={name}/>
+                    <GenreInstance title={name} setLink={setLink}/>
                     </>
                    ) 
                 })
@@ -37,7 +38,7 @@ function Genre(){
 
 /* GenreInstance component does the logic */ 
 /* Using axios,Fetches template data from backend using the title as url passed from Genre component */
-function GenreInstance({title}){
+function GenreInstance({title,setLink}){
     let [templateArr,setTemplateArr] = useState([]);
     useEffect(()=>{
         axios.get("genre/"+title)
@@ -55,9 +56,13 @@ function GenreInstance({title}){
                     {
                     templateArr.map((item)=>{
                         return (
-                        <div className="template">
+                        <div className="template" onClick={()=>{
+                            setLink("movie/"+item._id);
+                        }}>
+                            <Link to='/' style={{'textDecoration':'none'}}>
                             <img src={item.template_image}/>
-                            <h3>{item.title}</h3>
+                            <h3>{item.title}{}</h3>
+                            </Link>
                         </div>
                         )
                     })

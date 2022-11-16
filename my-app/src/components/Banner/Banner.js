@@ -2,8 +2,10 @@ import React,{useEffect,useState} from 'react';
 import '../../App.css';
 import './Banner.css';
 import { baseUrl } from "../../constants/constants";
+import { Link } from "react-router-dom";
 
-function Banner({data}){        
+
+function Banner({data,play,setPlay}){        
     let [movie,setMovie] = useState();
 
     useEffect(()=>{
@@ -12,14 +14,20 @@ function Banner({data}){
     });
     
     return(
-        <section className='section-common banner-section'>
-
-        <div className='banner-container'>
-            <div className='info-container'>
+        <section className={`${!data?'banner-loading loading-light':'section-common banner-section'}`}>
+            
+        <div className='banner-container' >
+            <div className={!data?'display-none':'info-container'}>
                 <div className='title-logo-container'>
-                    <img alt='title-logo' src={movie?movie.title_image:''}/>
-                </div>                    
+                    <img alt=' ' src={movie?movie.title_image:''}/>
+                </div>
                 <div className='details-container'>
+                    <div className='button'>
+                    <Link to="/" >
+                    <button onClick={()=>{setPlay(true)}}>Play</button>
+                    </Link>
+                    <button>My List</button>
+                    </div>
                     <div className='m-title'>{movie?movie.title:''}</div>
                     <div className='m-metadata'>
                         <span>{movie?movie.metaData.year:''}</span>
@@ -36,15 +44,15 @@ function Banner({data}){
             </div>
             <div className='banner-image-container'>
                 <div className='banner-image-desktop' >
-                    <img className='banner-image-desktop'  alt=' ' src='' style={{"background-image":`url(${movie?movie.hero_image_desktop:''})`}} />
+                    <img className={`banner-image-desktop ${!data?'display-none':''}`}  alt=' ' src='' style={{"background-image":`url(${movie?movie.hero_image_desktop:''})`}} />
                 </div>
                 <div>
-                    <img className='banner-image-mobile' alt=' ' src={movie?movie.hero_image_mobile:''}/>                    
+                    <img className={`banner-image-mobile ${!data?'display-none':''}`} alt=' ' src={movie?movie.hero_image_mobile:''}/>                    
                 </div>
-                <div className='banner-fade-left'></div>                            
+                <div className={`banner-fade-left ${!data?'display-none':''}`}></div>                            
             </div>
         </div>
-        <div className='banner-fade-bottom'></div>
+        <div className={`banner-fade-bottom ${!data?'display-none':''}`}></div>
         </section>
     )
 }
