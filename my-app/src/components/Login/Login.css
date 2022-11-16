@@ -1,0 +1,149 @@
+@media only screen and (max-width:701px) {
+    .login-image{
+        height: 100px!important;
+    }
+    .login-wrapper{
+        padding-top: 0px;
+        padding-left: 0px!important;
+        padding-right: 0px!important;
+    }
+
+    .login-container{
+        width:90%!important;
+        padding-left: 5%!important;
+        padding-right: 5%!important;
+        padding-top: 0!important;
+        background-color: black!important;
+    }
+    .login-form{
+        padding:2% 0 5%!important;
+    }
+    .login-input{
+        margin: 0!important;
+        padding: 1%!important;
+    }
+    .login-input input{
+        padding: 3%!important;
+        margin:2% 0 !important;
+        width:94%!important;
+    }
+    .login-input label{
+        top: calc(50% - 20%)!important;
+        font-size: 70%!important;
+    }
+
+
+}
+
+
+
+
+
+.login-image{
+    background-image: url(https://assets.nflxext.com/ffe/siteui/vlv3/0ef67cc5-0aa7-47cf-87bd-7f595afc7cfb/c96f2a1d-1627-40aa-a29e-6ab6b27b35ab/IN-en-20221107-popsignuptwoweeks-perspective_alpha_website_large.jpg);
+    min-height: 500px;
+}
+
+.login-wrapper{
+    min-height: 600px;
+    padding-top: 0px;
+    padding-left: 25%;
+    padding-right: 25%;
+    padding-bottom: 0px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.login-container{
+    height:510px;
+    width:300px;
+    padding: 5% 15% 3% 15%;
+    background-color:  rgba(0,0,0,.85);
+}
+.login{
+    padding: 1% 0 15%; 
+}
+.login-title{
+    padding: 5% 0 0;
+    font-size: 200%;
+    font-weight: 650;
+}
+.login-form{
+    padding:2% 0 30%;
+}
+
+
+.login-input{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 3% 0;
+}
+    input{
+        padding: 5%;
+        margin: 5% 0;
+        border:0;
+        border-width:0;
+        border-radius: 4px;
+        width:  calc(100% - 44px); 
+        font-size: 100%;
+        display:  flex;
+    }
+
+    label {
+        color: black;
+        position:  absolute; 
+        top: calc(50% - 15px);
+        left:  0; 
+        opacity:  0; 
+        transition:  all .3s ease; 
+        padding-left: 5px;
+        font-size: 90%;
+    }
+
+    input:not(:placeholder-shown) {
+        padding:  28px 0px 12px 15px;
+        font-weight: 500;
+    }
+    input:not(:placeholder-shown) + label {
+        transform:  translateY(-10px); 
+        opacity:  .7; 
+    }
+
+.login-button{
+    border:0;
+}
+    .login-button button{
+        width: 100%;
+        height: 100%;
+        padding: 3% 1%;
+        border:0;
+        border-width:0;
+        border-radius: 4px;
+        background-color: #e50914;
+        color: aliceblue;
+        font-size: 110%;
+        font-weight: 550;
+        cursor: pointer;
+    }
+    .login-button button:hover{
+        background-color: #e22932;
+        
+    }
+.login-signup-link{
+    display: flex;
+}
+    .login-signup-link h3{
+        margin:0;
+        padding-right: 10%;
+        color: #a3a1a1;
+        font-size: 110%;
+        font-weight: 400;
+    }
+    .login-signup-link a{
+        margin: 0;
+        color: aliceblue;
+        text-decoration: none;
+    }
+    .login-signup-link a:hover{
+    text-decoration: underline;
+    font-weight: 500;
+    }

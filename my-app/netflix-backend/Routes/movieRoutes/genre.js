@@ -1,6 +1,6 @@
 const express=require("express");
 const router=express.Router();
-const {fetchMovies,pipelineHome}=require("../Database/dbOps");
+const {fetchMovies,pipelineHome}=require("../../Database/dbOps");
 
 
 const sort={"metaData.year":-1};

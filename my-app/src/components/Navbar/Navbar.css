@@ -91,6 +91,7 @@
     width:90%;
     height:80%;
     border:0px hidden;
+    margin: 0;
 }
 
 
@@ -129,3 +130,7 @@
 
 
  }           
+
+ .nav-avatar{
+    cursor: pointer;
+ }

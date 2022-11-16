@@ -33,9 +33,9 @@ function Navbar(){
                 <input type="text" placeholder="      Search..." />
             </div>
             <div className="nav-avatar">
-                <a>
+                <a><Link to="/login">
                     <img src="https://i.pinimg.com/originals/0d/dc/ca/0ddccae723d85a703b798a5e682c23c1.png"></img>
-                </a>
+                </Link></a>
             </div>
         </div>
     )

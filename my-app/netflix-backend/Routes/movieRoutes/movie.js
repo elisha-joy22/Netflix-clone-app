@@ -1,6 +1,6 @@
 const express=require("express");
 const router=express.Router();
-const {fetchMovies,pipelineHome,similarMovies}=require("../Database/dbOps");
+const {fetchMovies,pipelineHome,similarMovies}=require("../../Database/dbOps");
 const objectId=require("mongodb").ObjectId;
 
 

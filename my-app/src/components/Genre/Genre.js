@@ -9,7 +9,7 @@ import { MovieContext, Movies } from "../Movie/Movie";
 
 
 /* Genre Component calls GenreInstance component where the logics are written and pass title as props */
-function Genre({setLink}){
+function Genre({link,setLink}){
     let genreArr = ["Recently Added","Action & Adventure","Dramas","Crime Movies","Thriller Movies","Sci-Fi Movies","Malayalam-Language Movies"]
     return(
         <section className="genre-section">
@@ -25,7 +25,7 @@ function Genre({setLink}){
                 genreArr.map((name)=>{      
                    return(
                     <>
-                    <GenreInstance title={name} setLink={setLink}/>
+                    <GenreInstance title={name} link={link} setLink={setLink}/>
                     </>
                    ) 
                 })
@@ -38,7 +38,7 @@ function Genre({setLink}){
 
 /* GenreInstance component does the logic */ 
 /* Using axios,Fetches template data from backend using the title as url passed from Genre component */
-function GenreInstance({title,setLink}){
+function GenreInstance({title,link,setLink}){
     let [templateArr,setTemplateArr] = useState([]);
     useEffect(()=>{
         axios.get("genre/"+title)
@@ -59,9 +59,9 @@ function GenreInstance({title,setLink}){
                         <div className="template" onClick={()=>{
                             setLink("movie/"+item._id);
                         }}>
-                            <Link to='/' style={{'textDecoration':'none'}}>
+                            <Link to="/" style={{'textDecoration':'none'}}>
                             <img src={item.template_image}/>
-                            <h3>{item.title}{}</h3>
+                            <h3>{item.title}</h3>
                             </Link>
                         </div>
                         )
