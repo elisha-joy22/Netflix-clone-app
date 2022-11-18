@@ -50,6 +50,7 @@ function Movies({link,setLink}){
             {
                 !play?<Banner data={movieData} play={play} setPlay={setPlay}/>
                 :<div className='screen'>
+                    <div className='temp'></div>
                     <iframe className='video' src={"https://www.youtube.com/embed/"+movieData.youtube_id+"?autoplay=1&modestbranding=1&controls=1"} width='100%'
                     height='560' frameborder='0'  allowFullScreen='true' webkitallowfullscreen="true" allow='autoplay'/>
                  </div>

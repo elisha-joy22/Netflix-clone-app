@@ -25,15 +25,15 @@ function Login(){
                     </form>
                     <div className="login-signup-link">
                         <h3>New to Netflix?</h3>
-                        <Link>Sign up now</Link>
+                        <Link to="/signup">Sign up now</Link>
                     </div>
                 </div>
             </div>
         </div>
         </section>
     )
-
 }
+
 
 
 export default Login;
