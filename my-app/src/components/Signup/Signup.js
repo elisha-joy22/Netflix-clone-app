@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import './Signup.css';
 
 
@@ -20,11 +21,11 @@ function Signup(){
                         </h3>
                         <div className="signup-email">
                             <div className="signup-input">
-                                <input name="userName" placeholder="Email or phone number" type={"email"} autoComplete="email" id="email" ></input>
-                                <label for="email">Email or phone number</label>
+                                <input name="userName" placeholder="Email or phone number" type={"email"} autoComplete="email" id="email" />
+                                <label for="email">Email</label>
                             </div>
                             <div className="signup-button">
-                                <button>Get Started></button>
+                                <Link to="/signup1"><button>Get Started></button></Link>
                             </div>
                         </div>    
                     </form>

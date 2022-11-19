@@ -78,7 +78,7 @@
     padding: 3% 0%;
     
 }
-    input{
+    .login-input input{
         padding: 5%;
         margin: 5% 0;
         border:0;
@@ -89,7 +89,7 @@
         display:  flex;
     }
 
-    label {
+    .login-input label {
         color: black;
         position:  absolute; 
         top: calc(50% - 15px);
@@ -100,11 +100,11 @@
         font-size: 90%;
     }
 
-    input:not(:placeholder-shown) {
+    .login-input input:not(:placeholder-shown) {
         padding:  28px 0px 12px 15px;
         font-weight: 500;
     }
-    input:not(:placeholder-shown) + label {
+    .login-input input:not(:placeholder-shown) + label {
         transform:  translateY(-10px); 
         opacity:  .7; 
     }
@@ -127,7 +127,8 @@
         cursor: pointer;
     }
     .login-button button:hover{
-        background-color: #e22932;
+        background-color: aliceblue;
+        color:#e50914;
         
     }
 .login-signup-link{

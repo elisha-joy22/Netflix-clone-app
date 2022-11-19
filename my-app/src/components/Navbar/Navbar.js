@@ -9,9 +9,6 @@ function Navbar(){
     return(
         <div className="nav">
             <div className="nav-logo">
-                <a>
-                                      
-                </a>
             </div>
             <div className="nav-items">
                 <div className="nav-item">

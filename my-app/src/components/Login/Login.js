@@ -12,8 +12,8 @@ function Login(){
                     <div className="login-title">Sign In</div>
                     <form className="login-form">
                         <div className="login-input">
-                                <input name="userName" placeholder="Email or phone number" type={"email"} autoComplete="email" id="email" ></input>
-                                <label for="email">Email or phone number</label>
+                                <input name="userName" placeholder="Email" type={"email"} autoComplete="email" id="email" ></input>
+                                <label for="email">Email</label>
                         </div>
                         <div className="login-input">                    
                                 <input name="userPassword" id="password" placeholder="Password" type={"password"}></input>
