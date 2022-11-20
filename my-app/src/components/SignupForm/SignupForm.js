@@ -1,16 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import './Signup1.css';
+import './SignupForm.css';
 
 
-function Signup1(){
+function SignupForm(){
     return (
         <section className="signup1-section">
         <div className="signup1-wrapper">
             <div className="signup1-container">
                 <div className="signup1">
                     <div className="signup1-titles">
-                        <h4>STEP <b>1</b> of <b>2</b></h4>
+                        <h4>STEP <b>1</b> of <b>3</b></h4>
                         <h2>
                             Create password to start
                             your membership
@@ -40,4 +40,4 @@ function Signup1(){
 
 
 
-export default Signup1;
+export default SignupForm;

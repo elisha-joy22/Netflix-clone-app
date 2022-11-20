@@ -73,7 +73,7 @@ function SignupPlans(){
                     </div>
                 </div>
                 <div className="next-button">
-                        <Link to="/signup/plans/payment"><button>Next</button></Link>
+                    <Link to="/signup/plans/paymentChooser"><button>Next</button></Link>
                 </div>
             </div>
         </section>

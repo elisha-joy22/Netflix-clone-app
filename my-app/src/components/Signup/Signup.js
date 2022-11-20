@@ -25,7 +25,7 @@ function Signup(){
                                 <label for="email">Email</label>
                             </div>
                             <div className="signup-button">
-                                <Link to="/signup1"><button>Get Started></button></Link>
+                                <Link to="/signup/form"><button>Get Started></button></Link>
                             </div>
                         </div>    
                     </form>
