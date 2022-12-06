@@ -20,15 +20,24 @@ function SignupForm(){
                     </div>
                     <form className="signup1-form">
                         <div className="signup1-input">
-                                <input name="userName" placeholder="Email" type={"email"} autoComplete="email" id="email" required='true'></input>
+                                <input name="userName" 
+                                    placeholder="Email" type={"email"} 
+                                    autoComplete="email" id="email" 
+                                    required='true'>   
+                                </input>
                                 <label for="email">Email</label>
                         </div>
                         <div className="signup1-input">                    
-                                <input name="userPassword" id="password" placeholder="Password" type={"password"} required='true'></input>
+                                <input name="userPassword" id="password" 
+                                    placeholder="Password" type={"password"} 
+                                    required='true'>  
+                                </input>
                                 <label for="password">Password</label>
                         </div>
                         <div className="signup1-button">
-                            <Link to="/signup/plans"><button>Next</button></Link>
+                            <Link to="/signup/plans">
+                                <button>Next</button>
+                            </Link>
                         </div>
                     </form>
                 </div>
