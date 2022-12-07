@@ -2,6 +2,7 @@ require("dotenv").config();
 const {getdb} = require("./db");
 const objectId = require("mongodb").ObjectId;
 const bcrypt = require("bcrypt");
+var jwt = require('jsonwebtoken');
 
 /* function to check the signup object follows the defined schema
 i/p - signupObject   o/p - boolean */
@@ -40,19 +41,19 @@ signupSchema function anf findUser function*/
 async function signupUser(signupobj,callback){
     !signupSchema(signupobj)?
         callback("Signup object doesn't match with schema")
-        :getUser(signupobj.userName,(data)=>{
-            data?
-                callback("User Exists")
-                :bcrypt.hash(signupobj.password,10)
-                .then(async(hash)=>{
-                    signupobj.password = await hash;
-                    getdb().collection(process.env.MONGODB_USERS_COLLECTION_NAME)
-                    .insertOne(signupobj,(err,res)=>{
-                        if(err)callback(err);
-                        callback(JSON.stringify(res)+" document inserted successfully");
-                    })
-                })  
-        }); 
+    :getUser(signupobj.userName,(data)=>{
+        data?
+            callback("User Exists")
+        :bcrypt.hash(signupobj.password,10)
+            .then(async(hash)=>{
+                signupobj.password = await hash;
+                getdb().collection(process.env.MONGODB_USERS_COLLECTION_NAME)
+                .insertOne(signupobj,(err,res)=>{
+                    if(err)callback(err);
+                    callback(JSON.stringify(res)+" document inserted successfully");
+                })
+            })  
+    }); 
 }
 
 /*
@@ -61,6 +62,7 @@ Inside that,uses getUser() to check user.
 If it returns user, uses bcrypt compare to match password.
 Finally returns a string  
 */
+
 function loginUser(loginobj){
     const loginPromise = new Promise((resolve,reject)=>{
         getUser(loginobj.userName,(data)=>{
@@ -68,10 +70,10 @@ function loginUser(loginobj){
                 resolve("Incorrect Username")
                 :bcrypt.compare(loginobj.password,data.password)
                 .then((result)=>{
-                    resolve(
-                        result?
-                        "Login success"
-                        :"Incorrect username or password"
+                    resolve( 
+                        !result?
+                            "Incorrect username or password"
+                        :generateAccessToken(data._id)
                     )
                     reject("Server error during login in loginUser")
                 })
@@ -81,4 +83,39 @@ function loginUser(loginobj){
     return loginPromise;
 }
 
-module.exports = {signupUser,loginUser,getUser}
+
+
+
+
+/*Auth functions  with JWT*/ 
+//generate Access token
+async function generateAccessToken(_id){
+    let accessToken =
+        _id? 
+            await jwt.sign(
+                {id:_id},
+                process.env.JWT_SECRET_KEY,
+                {expiresIn:"1800sec"}
+            )
+        :null;
+    return {accesstoken: accessToken};    
+}
+
+//verifyAccess token
+function verifyAccessToken(req,res,next){
+    let authHeaders = req.headers["authorization"];
+    let token = authHeaders && authHeaders.split(" ")[1];
+    if(token==null) return res.sendStatus(401)
+    else{
+        jwt.verify(token,process.env.JWT_SECRET_KEY,(err,user)=>{
+            console.log("t:",token);
+            console.log("user",user);
+            !user?
+            res.status(401).send({error:"token expired"})
+            :next();
+        })    
+    }
+    
+}
+
+module.exports = {signupUser,loginUser,getUser,verifyAccessToken}
